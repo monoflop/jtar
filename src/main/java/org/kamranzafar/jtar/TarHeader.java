@@ -202,13 +202,12 @@ public class TarHeader {
 	 * @param dir
 	 *            Is directory
 	 */
-	public static TarHeader createHeader(String entryName, long size, long modTime, boolean dir, int permissions) {
+	public static TarHeader createHeader(String entryName, long size, long modTime, boolean dir) {
 		String name = entryName;
 		name = TarUtils.trim(name.replace(File.separatorChar, '/'), '/');
 
 		TarHeader header = new TarHeader();
 		header.linkName = new StringBuffer("");
-		header.mode = permissions;
 
 		if (name.length() > 100) {
 			header.namePrefix = new StringBuffer(name.substring(0, name.lastIndexOf('/')));
